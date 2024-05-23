@@ -1,0 +1,45 @@
+I am creating a birthday card for my wife. In the birthday card will be riddles. Here is her theme and prompt:
+
+"In the land of Far Far Away, there exists a legendary Golden Coin that is said to bring immense fortune and happiness to whoever possesses it. This treasure was hidden long ago by the wise and reclusive sorcerer Merlin to protect it from falling into the wrong hands. The legend says that only a true-hearted adventurer, with the wit and courage to match, can uncover its whereabouts by solving a series of whimsical and challenging riddles.
+
+You, my Princess cast in the role of a fearless adventurer, must embark on this quest to claim the Golden Coin. The land of Far Far Away, known for its enchanted forests, quirky characters, and magical creatures, is in dire need of this treasure to restore joy and prosperity. The journey will take her through familiar landmarks, from Shrek's swamp to the dragon-guarded castle, and even to the depths of the Muffin Man's bakery.
+
+Guided by the spirit of Shrek's perseverance, Fiona's bravery, and Donkey's enthusiasm, you must gather pieces of the code hidden by the beloved (and sometimes bothersome) characters of Far Far Away. Each riddle you solve brings you closer to the ultimate prize and proves your worthiness to inherit the legendary Golden Coin.
+
+This quest is more than just a hunt for treasure; it’s an adventure to demonstrate true Shrek-like tenacity and heart. By piecing together the final code, you will unlock not only the treasure but also the laughter and cheer that Far Far Away has been longing for."
+
+In the website, there is an empty slot that a coin would fit in. I would like that everytime she answers a riddle, a piece of a gold coin would go in to the shape. After each riddle is answered and pieces of the gold coin keeps shaping it together until the full coin is formed, there would be an animation of the gold coin emitting magic!
+
+Website Design:
+There will be 6 prompts where she would have to enter in the answer. 
+
+Wizard Pops up with chat bubble: 
+Identify yourself!
+
+*Identifies*
+
+Picture pops up.
+
+Wizard: Thank you! I had to make sure it was you! I was not sure if someone was disguised as you... you can never be too careful.
+
+In the land of Far Far Away, there exists a legendary Golden Coin that is said to bring immense fortune and happiness to whoever possesses it. This treasure was hidden long ago by the wise and reclusive sorcerer Merlin to protect it from falling into the wrong hands. The legend says that only a true-hearted adventurer, with the wit and courage to match, can uncover its whereabouts by solving a series of whimsical and challenging riddles.
+
+You, my Princess cast in the role of a fearless adventurer, must embark on this quest to claim the Golden Coin. The land of Far Far Away, known for its enchanted forests, quirky characters, and magical creatures, is in dire need of this treasure to restore joy and prosperity. The journey will take her through familiar landmarks, from Shrek's swamp to the dragon-guarded castle, and even to the depths of the Muffin Man's bakery.
+
+Guided by the spirit of Shrek's perseverance, Fiona's bravery, and Donkey's enthusiasm, you must gather pieces of the code hidden by the beloved (and sometimes bothersome) characters of Far Far Away. Each riddle you solve brings you closer to the ultimate prize and proves your worthiness to inherit the legendary Golden Coin.
+
+This quest is more than just a hunt for treasure; it’s an adventure to demonstrate true Shrek-like tenacity and heart. By piecing together the final code, you will unlock not only the treasure but also the laughter and cheer that Far Far Away has been longing for.
+
+Do you accept?
+
+*window pops up for yes or no 
+
+
+
+
+
+
+
+
+
+

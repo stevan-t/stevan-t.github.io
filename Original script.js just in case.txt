@@ -1,0 +1,121 @@
+let currentPage = 'wizard-intro';
+let maxPageReached = 'wizard-intro';
+let currentPuzzle = 0;
+let incorrectAttempts = 0;
+const puzzles = [
+  { prompt: "What is the first letter of each answer in consecutive order?", answer: "ypckc" },
+  { prompt: "What number is found in the message?", answer: "23" },
+  { prompt: "What is the third letter of each answer in consecutive order?", answer: "cptkb" },
+  { prompt: "L x W", answer: "90" },
+  { prompt: "What's the answer?", answer: "chicken" },
+  { prompt: "Who is the short-statured, power-hungry lord from Far Far Away?", answer: "lord farquaad" },
+  { prompt: "Solve the rebus puzzle.", answer: "your answer here" }
+];
+const hints = [
+  "Hint for puzzle 1",
+  "Hint for puzzle 2",
+  "Hint for puzzle 3",
+  "Hint for puzzle 4",
+  "Hint for puzzle 5",
+  "Hint for puzzle 6",
+  "Hint for puzzle 7"
+];
+
+function checkName() {
+  const name = document.getElementById('name-input').value.trim().toLowerCase();
+  if (name === 'quejanna') {
+    showPage('name-accepted');
+  } else {
+    alert('What is your name?');
+  }
+}
+
+function showLore() {
+  showPage('lore');
+}
+
+function showAcceptPrompt() {
+  showPage('accept-prompt');
+}
+
+function startQuest(accept) {
+  if (accept) {
+    showPage('puzzle-page-1');
+    showPuzzle();
+  } else {
+    alert("Too bad, you are the chosen one, let's embark on this adventure!");
+    showPage('puzzle-page-1');
+    showPuzzle();
+  }
+}
+
+function startPuzzles() {
+  showPage('puzzle-page-1');
+  showPuzzle();
+}
+
+function showPuzzle() {
+  document.getElementById('puzzle-prompt').innerText = puzzles[currentPuzzle].prompt;
+  document.getElementById('answer-box').value = '';
+  document.getElementById('response-section').innerText = '';
+  document.getElementById('hint-section').style.display = 'none';
+}
+
+function submitAnswer() {
+  const userAnswer = document.getElementById('answer-box').value.trim().toLowerCase();
+  if (userAnswer === puzzles[currentPuzzle].answer.toLowerCase()) {
+    currentPuzzle++;
+    incorrectAttempts = 0;
+    if (currentPuzzle < puzzles.length) {
+      showPuzzle();
+    } else {
+      showCompletionPage();
+    }
+  } else {
+    document.getElementById('response-section').innerText = "Incorrect. Try again!";
+    incorrectAttempts++;
+    if (currentPuzzle === 5) {
+      document.getElementById('response-section').innerText = "Incorrect. The short-statured, power-hungry lord from Far Far Away is Lord Farquaad!";
+    }
+    if (incorrectAttempts >= 3) {
+      document.getElementById('hint-section').style.display = 'block';
+      document.getElementById('hint-section').innerText = hints[currentPuzzle];
+    }
+  }
+}
+
+function showPage(page) {
+  document.getElementById(currentPage).style.display = 'none';
+  document.getElementById(page).style.display = 'block';
+  currentPage = page;
+  if (currentPage > maxPageReached) {
+    maxPageReached = currentPage;
+  }
+}
+
+function showCompletionPage() {
+  showPage('completion-page');
+}
+
+function claimPrize() {
+  alert('You can exchange this for $400!');
+}
+
+function submitAnswerByRiddleNumber(riddleNumber) {
+  const answerBox = document.getElementById(`answer-box-${riddleNumber}`);
+  const responseSection = document.getElementById(`response-section-${riddleNumber}`);
+  const hintSection = document.getElementById(`hint-section-${riddleNumber}`);
+
+  const userAnswer = answerBox.value.trim().toLowerCase();
+  if (userAnswer === puzzles[riddleNumber - 1].answer.toLowerCase()) {
+    responseSection.innerText = "Correct!";
+    hintSection.style.display = 'none';
+  } else {
+    responseSection.innerText = "Incorrect. Try again!";
+    incorrectAttempts++;
+    if (incorrectAttempts >= 3) {
+      hintSection.style.display = 'block';
+      hintSection.innerText = hints[riddleNumber - 1];
+    }
+  }
+}

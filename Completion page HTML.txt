@@ -1,0 +1,11 @@
+  <!-- Completion Page -->
+  <div id="completion-page" class="background-shrek" style="display: none;">
+    <div class="wizard-container">
+      <div class="chat-bubble">
+        <p class="medievalsharp-regular">Congratulations, the gold coin is yours!</p>
+        <button onclick="claimPrize()">Exchange for $400</button>
+      </div>
+      <div class="wizard"></div>
+      <div class="clouds"></div>
+    </div>
+  </div>
