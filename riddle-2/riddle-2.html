@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Riddle 2</title>
+  <link rel="stylesheet" href="riddle-2.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="background-puzzle-1">
+    <div class="wizard-container">
+      <div class="chat-bubble">
+        <div id="message-section" class="medievalsharp-regular"></div>
+        <p class="medievalsharp-regular">Number found in the message?</p>
+      </div>
+      <input type="text" id="answer-box" placeholder="Enter your answer here">
+      <button onclick="submitAnswer()">Submit</button>
+      <div id="response-section"></div>
+      <div id="hint-section" style="display: none;"></div>
+      <img src="../Photos/Characters/shrek.png" alt="shrek" class="character">
+    </div>
+    <!-- Navigation arrows -->
+    <div class="navigation-arrows">
+      <button id="left-arrow" onclick="navigate('left')">&larr;</button>
+      <button id="right-arrow" onclick="navigate('right')" style="display: none;">&rarr;</button>
+    </div>
+  </div>
+
+      <!-- Audio  -->
+      <audio id="background-music" src="../Audio/Music/riddle-2-music.mp3" autoplay loop>
+        Your browser does not support the audio element.
+    </audio>
+    
+       <!-- Volume Control -->
+       <div class="volume-control">
+        <label for="volume-slider">Volume:</label>
+        <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="1">
+    </div>
+  
+      <!-- Sound Effects -->
+      <audio id="correct-sound" src="../Audio/Sound Effects/Correct chime.mp3"></audio>
+      <audio id="incorrect-sound" src="../Audio/Sound Effects/Negative chime.mp3"></audio>
+      
+  <script src="riddle-2.js"></script>
+</body>
+</html>
