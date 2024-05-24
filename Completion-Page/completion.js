@@ -1,136 +1,82 @@
-/* completion.css */
+$(document).ready(function() {
+  // Initial fade-in for the whole page
+  $('body').hide().fadeIn(2000);
 
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden; /* Prevents scrolling */
-}
+  // Function to show popups with fade-in effect
+  function showPopup(message) {
+    const popup = $('<div class="popup"></div>').text(message);
+    $('body').append(popup);
+    popup.hide().fadeIn(1000);
 
-#completionPage {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  background: url('./completionbackground.png') no-repeat center center;
-  background-size: cover;
-  text-align: center;
-  color: white;
-  font-family: 'MedievalSharp', cursive;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+    // Auto-hide the popup after 3 seconds
+    setTimeout(function() {
+      popup.fadeOut(1000, function() {
+        $(this).remove();
+      });
+    }, 3000);
+  }
 
-#goldenCoinAnimation {
-  width: 150px;
-  height: 150px;
-  position: absolute;
-  top: 10%; /* Adjust this value to move the coin */
-  left: 46%;
-  transform: translate(-50%, -50%);
-  background: url('../Photos/goldencoin.png') no-repeat center center;
-  background-size: contain;
-  animation: spinY 3s linear infinite, fadeIn 2s ease-in-out forwards; /* Ensure it stays visible */
-  opacity: 0; /* Start hidden */
-}
+  // Example usage of showPopup
+  showPopup('Congratulations on completing the quest!');
 
-@keyframes spinY {
-  0% { transform: rotateY(0deg); }
-  100% { transform: rotateY(360deg); }
-}
+  // Additional interactive elements
+  $('#completion-button').click(function() {
+    $('#completion-message').fadeIn(1000);
+    showPopup('You have claimed your prize!');
+  });
 
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
+  // Function to handle prize claiming
+  function claimPrize() {
+    showPopup('You can exchange this for $400!');
+    $('#claim-prize-button').fadeOut(500, function() {
+      $(this).text('Prize Claimed').fadeIn(500);
+    });
+  }
 
-#congratulationsMessage {
-  font-size: 2em;
-  margin-bottom: 20px;
-  position: absolute;
-  top: 20%; /* Adjust this value to move the text up or down */
-  left: 50%;
-  transform: translateX(-50%);
-}
+  // Event listener for claim prize button
+  $('#claim-prize-button').click(claimPrize);
 
-#popup {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 10%;
-  background: rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  border-radius: 10px;
-  display: none;
-}
+  // Animate the wizard and clouds
+  function animateElements() {
+    $('.wizard').animate({ bottom: '0' }, 2000).animate({ bottom: '-10%' }, 2000);
+    $('.clouds').animate({ left: '0' }, 2000).animate({ left: '-4%' }, 2000);
+  }
 
-#popup h2 {
-  font-size: 1.5em;
-  margin-bottom: 20px;
-}
+  // Call animateElements on page load
+  animateElements();
+});
 
-#popup button {
-  display: block;
-  width: 100%;
-  margin: 10px 0;
-  padding: 10px;
-  font-size: 1em;
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-}
+// CSS for popups
+const styles = `
+  .popup {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 1000;
+    font-size: 18px;
+    text-align: center;
+  }
+  #completion-message {
+    display: none;
+    font-size: 24px;
+    color: green;
+  }
+  #claim-prize-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: gold;
+    color: black;
+    border: 2px solid black;
+    border-radius: 5px;
+  }
+`;
 
-#saveVillageButton {
-  background: green;
-  color: white;
-}
-
-#exchangeButton {
-  background: gold;
-  color: black;
-}
-
-#closePopupButton {
-  position: absolute;
-  top: -10px;
-  right: -90px;
-  background: none;
-  border: none;
-  font-size: 1.5em;
-  color: white;
-  cursor: pointer;
-}
-
-/* Ensure the fireworks canvas covers the entire page */
-.fireworks-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none; /* Allows interactions with other elements */
-}
-
-.volume-control {
-  position: fixed;
-  bottom: 30px;
-  right: 105px;
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 10px;
-  border-radius: 5px;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-}
-
-.volume-control label {
-  margin-right: 10px;
-}
-
-#volume-slider {
-  cursor: pointer;
-}
-
+// Inject styles into the document
+$('<style>').text(styles).appendTo('head');
