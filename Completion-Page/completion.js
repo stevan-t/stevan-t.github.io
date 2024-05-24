@@ -1,38 +1,136 @@
-document.addEventListener("DOMContentLoaded", function() {
-  const audioElement = document.getElementById("background-music");
-  const volumeSlider = document.getElementById("volume-slider");
-  const correctSound = document.getElementById("correct-sound");
-  const incorrectSound = document.getElementById("incorrect-sound");
+/* completion.css */
 
-  // Set initial volume based on slider value
-  function setInitialVolume() {
-    const initialVolume = volumeSlider.value;
-    audioElement.volume = initialVolume;
-    correctSound.volume = initialVolume;
-    incorrectSound.volume = initialVolume;
-  }
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Prevents scrolling */
+}
 
-  // Update volume for all audio elements
-  function updateVolume(volume) {
-    audioElement.volume = volume;
-    correctSound.volume = volume;
-    incorrectSound.volume = volume;
-  }
+#completionPage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: url('./completionbackground.png') no-repeat center center;
+  background-size: cover;
+  text-align: center;
+  color: white;
+  font-family: 'MedievalSharp', cursive;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-  // Volume control
-  volumeSlider.addEventListener("input", function() {
-    updateVolume(volumeSlider.value);
-  });
+#goldenCoinAnimation {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: 10%; /* Adjust this value to move the coin */
+  left: 46%;
+  transform: translate(-50%, -50%);
+  background: url('../Photos/goldencoin.png') no-repeat center center;
+  background-size: contain;
+  animation: spinY 3s linear infinite, fadeIn 2s ease-in-out forwards; /* Ensure it stays visible */
+  opacity: 0; /* Start hidden */
+}
 
-  // Function to play background music
-  function playAudio() {
-    audioElement.muted = false;
-    audioElement.play().catch(error => {
-      console.log("Autoplay was prevented:", error);
-    });
-  }
+@keyframes spinY {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(360deg); }
+}
 
-  // Set initial volume and play background music on page load
-  setInitialVolume();
-  playAudio();
-});
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+#congratulationsMessage {
+  font-size: 2em;
+  margin-bottom: 20px;
+  position: absolute;
+  top: 20%; /* Adjust this value to move the text up or down */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#popup {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10%;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  display: none;
+}
+
+#popup h2 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+#popup button {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 1em;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+#saveVillageButton {
+  background: green;
+  color: white;
+}
+
+#exchangeButton {
+  background: gold;
+  color: black;
+}
+
+#closePopupButton {
+  position: absolute;
+  top: -10px;
+  right: -90px;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  color: white;
+  cursor: pointer;
+}
+
+/* Ensure the fireworks canvas covers the entire page */
+.fireworks-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Allows interactions with other elements */
+}
+
+.volume-control {
+  position: fixed;
+  bottom: 30px;
+  right: 105px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+}
+
+.volume-control label {
+  margin-right: 10px;
+}
+
+#volume-slider {
+  cursor: pointer;
+}
+
